@@ -1,0 +1,8 @@
+{
+  "name": "deflockbhm-profile",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate-readme": "node scripts/generate-readme.js"
+  }
+}
