@@ -22,7 +22,7 @@ Separately, at least **34 officers** have been fired, arrested, or convicted for
 | Officers fired/arrested/convicted (total) | 34 |
 | ...in the last 90 days | 20 |
 
-*Figures are computed directly from each tracker's published data file (links below) — news-sourced, not exhaustive court/police-record pulls; see each repo's `SCHEMA.md` for scope and caveats. Regenerated daily, last refreshed 2026-08-04.*
+*Figures are computed directly from each tracker's published data file (links below) — news-sourced, not exhaustive court/police-record pulls; see each repo's `SCHEMA.md` for scope and caveats. Regenerated daily, last refreshed 2026-08-05.*
 
 <!-- STATS:END -->
 
