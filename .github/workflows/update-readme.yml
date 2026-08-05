@@ -2,7 +2,7 @@ name: Update README stats
 
 on:
   schedule:
-    - cron: "17 6 * * *" # daily, off the hour to avoid GH Actions cron pile-up
+    - cron: "17 */2 * * *" # every 2 hours, off the hour to avoid GH Actions cron pile-up
   workflow_dispatch: {}
 
 permissions:
