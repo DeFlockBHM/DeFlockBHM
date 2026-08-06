@@ -59,7 +59,8 @@ function summarizeMunicipalities(data) {
   const entries = data.entries || [];
   const total = entries.length;
   const since2025 = entries.filter((e) => (e.date?.year ?? null) >= CUTOFF_YEAR).length;
-  return { total, since2025 };
+  const YTD = entries.filter(e => (e.date?.year ?? null) == (new Date()).getFullYear());
+  return { total, since2025, YTD };
 }
 
 function summarizeLawsuits(data) {
@@ -120,9 +121,7 @@ function renderStatsBlock({ muni, suits, misuse }, generatedAt) {
   const lines = [];
 
   lines.push(
-    `To date, **${muni.total} municipalities** have deflocked — Flock Safety ` +
-      `cameras deactivated, contracts cancelled or not renewed, or proposals ` +
-      `rejected — and **${muni.since2025}** of those (${pct(muni.since2025, muni.total)}) ` +
+    `To date, **${muni.total} municipalities** have deflocked. ${muni.YTD > 0 ? `**${muni.YTD}** of those (${pct(muni.YTD, muni.total)}) have deflocked YTD` : ""} and **${muni.since2025}** of those (${pct(muni.since2025, muni.total)}) ` +
       `have happened since the start of ${CUTOFF_YEAR}.`
   );
 
@@ -157,6 +156,7 @@ function renderStatsBlock({ muni, suits, misuse }, generatedAt) {
     "| Metric | Count |",
     "|---|---|",
     `| Municipalities deflocked (total) | ${muni.total} |`,
+    `| ...deflocked YTD | ${muni.YTD} |`,
     `| ...since start of ${CUTOFF_YEAR} | ${muni.since2025} |`,
     `| Civil lawsuits tracked (total) | ${suits.total} |`,
     `| ...since start of ${CUTOFF_YEAR} | ${suits.since2025} |`,

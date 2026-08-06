@@ -1,7 +1,6 @@
 # DeFlockBHM
 
-Community-maintained, open-source trackers documenting the fallout from Flock
-Safety's ALPR (automated license plate reader) camera network: municipalities
+These are aggregated statistics from community-maintained, open-source trackers documenting the fallout from Flock Safety's ALPR (automated license plate reader) camera network: municipalities
 that have deflocked, civil lawsuits over misuse and mistaken-identity stops,
 and officers fired, arrested, or convicted for misusing the system.
 
