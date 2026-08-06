@@ -59,7 +59,7 @@ function summarizeMunicipalities(data) {
   const entries = data.entries || [];
   const total = entries.length;
   const since2025 = entries.filter((e) => (e.date?.year ?? null) >= CUTOFF_YEAR).length;
-  const YTD = entries.filter(e => (e.date?.year ?? null) == (new Date()).getFullYear());
+  const YTD = entries.filter(e => (e.date?.year ?? null) == (new Date()).getFullYear()).length;
   return { total, since2025, YTD };
 }
 
