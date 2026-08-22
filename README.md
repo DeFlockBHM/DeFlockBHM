@@ -6,15 +6,15 @@ and officers fired, arrested, or convicted for misusing the system.
 
 <!-- STATS:START -->
 
-To date, **128 municipalities** have deflocked. **83** of those (65%) have deflocked YTD and **120** of those (94%) have happened since the start of 2025. 
+To date, **133 municipalities** have deflocked. **88** of those (66%) have deflocked YTD and **125** of those (94%) have happened since the start of 2025. 
 At least **11 civil lawsuits** have been filed alleging mistaken-identity stops or other civil-rights violations tied to Flock's ALPR network, **5** of them since the start of 2025. **5** have settled, totaling **$2,229,500 (~$2.23M)** in publicly reported, actually-paid settlements. 
 Separately, at least **35 officers** have been fired, arrested, or convicted for misusing Flock or similar ALPR access (23 fired, 24 arrested, 6 convicted — some overlap, e.g. fired *and* arrested), including **21** in the last 90 days.
 
 | Metric | Count |
 |---|---|
-| Municipalities deflocked (total) | 128 |
-| ...deflocked YTD | 83 |
-| ...since start of 2025 | 120 |
+| Municipalities deflocked (total) | 133 |
+| ...deflocked YTD | 88 |
+| ...since start of 2025 | 125 |
 | Civil lawsuits tracked (total) | 11 |
 | ...since start of 2025 | 5 |
 | ...settled | 5 |
