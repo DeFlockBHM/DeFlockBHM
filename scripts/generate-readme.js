@@ -18,6 +18,28 @@ const SOURCES = {
 
 const MARKER_START = "<!-- STATS:START -->";
 const MARKER_END = "<!-- STATS:END -->";
+const MALFEASANCE_MARKER_START = "<!-- MALFEASANCE:START -->";
+const MALFEASANCE_MARKER_END = "<!-- MALFEASANCE:END -->";
+
+// Display order/labels for the outcome breakdown table. Mirrors the
+// `outcomes[]` enum documented in flock-officer-misuse's SCHEMA.md.
+const OUTCOME_LABELS = [
+  ["fired", "Fired"],
+  ["arrested", "Arrested"],
+  ["charged", "Charged"],
+  ["pleaded_guilty", "Pleaded guilty"],
+  ["convicted", "Convicted"],
+  ["sentenced", "Sentenced"],
+  ["resigned", "Resigned"],
+  ["retired", "Retired"],
+  ["suspended", "Suspended"],
+  ["administrative_leave", "Administrative leave"],
+  ["demoted", "Demoted"],
+  ["disciplined", "Disciplined (reprimand/corrective action)"],
+  ["access_revoked", "Access revoked"],
+  ["under_investigation", "Under investigation"],
+  ["no_action_reported", "No outcome reported"],
+];
 const RECENT_WINDOW_DAYS = 90;
 const CUTOFF_YEAR = 2025;
 
@@ -124,6 +146,26 @@ function summarizeMisuse(data) {
   };
 }
 
+// Full outcome breakdown across every documented ALPR malfeasance incident
+// (all vendors, not just Flock — see flock-officer-misuse's README for why
+// that tracker isn't Flock-only). Rows are independent counts, not a
+// partition: one incident can carry multiple outcomes (e.g. arrested *and*
+// charged), so rows overlap and won't sum to the incident total.
+function summarizeMalfeasance(data) {
+  const incidents = (data.incidents || []).filter((i) => i.status !== "removed_from_source");
+  const total = incidents.length;
+  const flockCount = incidents.filter((i) => i.is_flock).length;
+
+  const outcomeCounts = {};
+  for (const i of incidents) {
+    for (const o of i.outcomes || []) {
+      outcomeCounts[o] = (outcomeCounts[o] || 0) + 1;
+    }
+  }
+
+  return { total, flockCount, otherVendorCount: total - flockCount, outcomeCounts };
+}
+
 function renderStatsBlock({ muni, suits, misuse }, generatedAt) {
   const lines = [];
 
@@ -182,6 +224,50 @@ function renderStatsBlock({ muni, suits, misuse }, generatedAt) {
   return `${narrative}\n\n${table}\n\n${disclaimer}`;
 }
 
+function renderMalfeasanceBlock(malfeasance, generatedAt) {
+  const { total, flockCount, otherVendorCount, outcomeCounts } = malfeasance;
+
+  const intro =
+    `**${total} documented ALPR malfeasance incidents** in total ` +
+    `(${flockCount} Flock, ${otherVendorCount} other/unspecified vendor), ` +
+    `sourced from the Institute for Justice's ALPR abuse database via ` +
+    `[flock-officer-misuse](https://github.com/DeFlockBHM/flock-officer-misuse). ` +
+    `An incident can carry more than one outcome (e.g. arrested *and* ` +
+    `charged), so the rows below are independent counts, not a partition — ` +
+    `they overlap with each other and won't sum to ${total}.`;
+
+  const table = [
+    "| Outcome | Count |",
+    "|---|---|",
+    ...OUTCOME_LABELS.map(
+      ([key, label]) => `| ${label} | ${outcomeCounts[key] || 0} |`
+    ),
+  ].join("\n");
+
+  const disclaimer =
+    "*Counts are independent per outcome (see note above); computed " +
+    "directly from flock-officer-misuse's published data file — see its " +
+    `\`SCHEMA.md\` for how outcomes are tagged and its scope/caveats. ` +
+    `Regenerated daily, last refreshed ${generatedAt}.*`;
+
+  return `${intro}\n\n${table}\n\n${disclaimer}`;
+}
+
+function spliceMarkerBlock(content, startMarker, endMarker, block) {
+  const startIdx = content.indexOf(startMarker);
+  const endIdx = content.indexOf(endMarker);
+  if (startIdx === -1 || endIdx === -1 || endIdx < startIdx) {
+    throw new Error(`README.md is missing ${startMarker} / ${endMarker} markers`);
+  }
+  return (
+    content.slice(0, startIdx + startMarker.length) +
+    "\n\n" +
+    block +
+    "\n\n" +
+    content.slice(endIdx)
+  );
+}
+
 async function main() {
   const [muniData, suitsData, misuseData] = await Promise.all([
     fetchJson(SOURCES.municipalities),
@@ -194,27 +280,24 @@ async function main() {
     suits: summarizeLawsuits(suitsData),
     misuse: summarizeMisuse(misuseData),
   };
+  const malfeasance = summarizeMalfeasance(misuseData);
 
   const generatedAt = new Date().toISOString().slice(0, 10);
-  const block = renderStatsBlock(stats, generatedAt);
+  const statsBlock = renderStatsBlock(stats, generatedAt);
+  const malfeasanceBlock = renderMalfeasanceBlock(malfeasance, generatedAt);
 
   const fs = await import("node:fs/promises");
-  const readme = await fs.readFile(README_PATH, "utf8");
+  let readme = await fs.readFile(README_PATH, "utf8");
 
-  const startIdx = readme.indexOf(MARKER_START);
-  const endIdx = readme.indexOf(MARKER_END);
-  if (startIdx === -1 || endIdx === -1 || endIdx < startIdx) {
-    throw new Error(`README.md is missing ${MARKER_START} / ${MARKER_END} markers`);
-  }
+  readme = spliceMarkerBlock(readme, MARKER_START, MARKER_END, statsBlock);
+  readme = spliceMarkerBlock(
+    readme,
+    MALFEASANCE_MARKER_START,
+    MALFEASANCE_MARKER_END,
+    malfeasanceBlock
+  );
 
-  const updated =
-    readme.slice(0, startIdx + MARKER_START.length) +
-    "\n\n" +
-    block +
-    "\n\n" +
-    readme.slice(endIdx);
-
-  await fs.writeFile(README_PATH, updated);
+  await fs.writeFile(README_PATH, readme);
 }
 
 main().catch((err) => {

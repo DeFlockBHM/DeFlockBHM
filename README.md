@@ -26,6 +26,34 @@ Separately, at least **72 officers** have been fired, arrested, or convicted for
 
 <!-- STATS:END -->
 
+## ALPR malfeasance, by outcome
+
+<!-- MALFEASANCE:START -->
+
+**203 documented ALPR malfeasance incidents** in total (188 Flock, 15 other/unspecified vendor), sourced from the Institute for Justice's ALPR abuse database via [flock-officer-misuse](https://github.com/DeFlockBHM/flock-officer-misuse). An incident can carry more than one outcome (e.g. arrested *and* charged), so the rows below are independent counts, not a partition — they overlap with each other and won't sum to 203.
+
+| Outcome | Count |
+|---|---|
+| Fired | 52 |
+| Arrested | 32 |
+| Charged | 38 |
+| Pleaded guilty | 3 |
+| Convicted | 1 |
+| Sentenced | 1 |
+| Resigned | 26 |
+| Retired | 1 |
+| Suspended | 16 |
+| Administrative leave | 12 |
+| Demoted | 3 |
+| Disciplined (reprimand/corrective action) | 1 |
+| Access revoked | 1 |
+| Under investigation | 7 |
+| No outcome reported | 60 |
+
+*Counts are independent per outcome (see note above); computed directly from flock-officer-misuse's published data file — see its `SCHEMA.md` for how outcomes are tagged and its scope/caveats. Regenerated daily, last refreshed 2026-09-05.*
+
+<!-- MALFEASANCE:END -->
+
 ## Repositories
 
 - [**deflocked-municipalities**](https://github.com/DeFlockBHM/deflocked-municipalities) — municipalities that have deactivated, cancelled, or rejected Flock Safety ALPR contracts.
@@ -41,5 +69,6 @@ The block above is regenerated daily by [`scripts/generate-readme.js`](scripts/g
 run on a schedule by [`.github/workflows/update-readme.yml`](.github/workflows/update-readme.yml).
 The script fetches the three data files above directly and recomputes every
 number from scratch — no AI, no manual editing. Edits made inside the
-`STATS:START` / `STATS:END` markers will be overwritten on the next run; edit
-everything else in this file freely.
+`STATS:START` / `STATS:END` or `MALFEASANCE:START` / `MALFEASANCE:END`
+markers will be overwritten on the next run; edit everything else in this
+file freely.
