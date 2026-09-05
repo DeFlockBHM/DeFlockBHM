@@ -88,22 +88,29 @@ function summarizeLawsuits(data) {
 }
 
 function summarizeMisuse(data) {
-  const cases = data.cases || [];
+  // v3 schema (flock-officer-misuse, post IJ-scraper rewrite): a flat
+  // `incidents[]` array, no more cases/incidents split. Entries can be
+  // `status: "removed_from_source"` (no longer on IJ's page but kept for
+  // history, per SCHEMA.md) — those are excluded from these counts as they
+  // may represent stale/retracted reports.
+  const incidents = (data.incidents || []).filter((i) => i.status !== "removed_from_source");
   const now = Date.now();
   const recentCutoff = now - RECENT_WINDOW_DAYS * 24 * 60 * 60 * 1000;
 
-  const hasTrackedOutcome = (c) =>
-    (c.outcomes || []).some((o) => ["fired", "arrested", "convicted"].includes(o));
+  const hasTrackedOutcome = (i) =>
+    (i.outcomes || []).some((o) => ["fired", "arrested", "convicted"].includes(o));
 
-  const tracked = cases.filter(hasTrackedOutcome);
-  const recent = tracked.filter((c) => {
-    const d = parseRecentDate(c.last_updated);
+  const tracked = incidents.filter(hasTrackedOutcome);
+  // Recency is measured against when the incident happened/was reported
+  // (date.iso, IJ's own field), not when this tracker last scraped it.
+  const recent = tracked.filter((i) => {
+    const d = parseRecentDate(i.date?.iso);
     return d && d.getTime() >= recentCutoff;
   });
 
   const outcomeCounts = {};
-  for (const c of cases) {
-    for (const o of c.outcomes || []) {
+  for (const i of incidents) {
+    for (const o of i.outcomes || []) {
       outcomeCounts[o] = (outcomeCounts[o] || 0) + 1;
     }
   }
