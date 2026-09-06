@@ -22,7 +22,7 @@ Separately, at least **72 officers** have been fired, arrested, or convicted for
 | Officers fired/arrested/convicted (total) | 72 |
 | ...in the last 90 days | 37 |
 
-*Figures are computed directly from each tracker's published data file (links below) — news-sourced, not exhaustive court/police-record pulls; see each repo's `SCHEMA.md` for scope and caveats. Regenerated daily, last refreshed 2026-09-05.*
+*Figures are computed directly from each tracker's published data file (links below) — news-sourced, not exhaustive court/police-record pulls; see each repo's `SCHEMA.md` for scope and caveats. Regenerated daily, last refreshed 2026-09-06.*
 
 <!-- STATS:END -->
 
@@ -50,7 +50,7 @@ Separately, at least **72 officers** have been fired, arrested, or convicted for
 | Under investigation | 7 |
 | No outcome reported | 60 |
 
-*Counts are independent per outcome (see note above); computed directly from flock-officer-misuse's published data file — see its `SCHEMA.md` for how outcomes are tagged and its scope/caveats. Regenerated daily, last refreshed 2026-09-05.*
+*Counts are independent per outcome (see note above); computed directly from flock-officer-misuse's published data file — see its `SCHEMA.md` for how outcomes are tagged and its scope/caveats. Regenerated daily, last refreshed 2026-09-06.*
 
 <!-- MALFEASANCE:END -->
 
