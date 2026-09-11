@@ -30,7 +30,7 @@ Separately, at least **74 officers** have been fired, arrested, or convicted for
 
 <!-- MALFEASANCE:START -->
 
-**226 documented ALPR malfeasance incidents** in total (211 Flock, 15 other/unspecified vendor), sourced from the Institute for Justice's ALPR abuse database via [flock-officer-misuse](https://github.com/DeFlockBHM/flock-officer-misuse). An incident can carry more than one outcome (e.g. arrested *and* charged), so the rows below are independent counts, not a partition — they overlap with each other and won't sum to 226.
+**227 documented ALPR malfeasance incidents** in total (212 Flock, 15 other/unspecified vendor), sourced from the Institute for Justice's ALPR abuse database via [flock-officer-misuse](https://github.com/DeFlockBHM/flock-officer-misuse). An incident can carry more than one outcome (e.g. arrested *and* charged), so the rows below are independent counts, not a partition — they overlap with each other and won't sum to 227.
 
 | Outcome | Count |
 |---|---|
@@ -42,9 +42,9 @@ Separately, at least **74 officers** have been fired, arrested, or convicted for
 | Sentenced | 1 |
 | Resigned | 32 |
 | Retired | 1 |
-| Suspended | 16 |
+| Suspended | 17 |
 | Administrative leave | 17 |
-| Demoted | 3 |
+| Demoted | 4 |
 | Disciplined (reprimand/corrective action) | 1 |
 | Access revoked | 1 |
 | Under investigation | 8 |
