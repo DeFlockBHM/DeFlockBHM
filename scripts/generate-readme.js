@@ -42,6 +42,10 @@ const OUTCOME_LABELS = [
 ];
 const RECENT_WINDOW_DAYS = 90;
 const CUTOFF_YEAR = 2025;
+const MONTH_NAMES = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
 
 async function fetchJson(url) {
   const res = await fetch(url);
@@ -72,6 +76,12 @@ function formatUsd(amount) {
   return whole;
 }
 
+function formatPopulation(n) {
+  const whole = n.toLocaleString("en-US");
+  if (n >= 1_000_000) return `${whole} (~${(n / 1_000_000).toFixed(2)}M)`;
+  return whole;
+}
+
 function pct(part, whole) {
   if (!whole) return "0%";
   return `${Math.round((part / whole) * 100)}%`;
@@ -81,8 +91,31 @@ function summarizeMunicipalities(data) {
   const entries = data.entries || [];
   const total = entries.length;
   const since2025 = entries.filter((e) => (e.date?.year ?? null) >= CUTOFF_YEAR).length;
-  const YTD = entries.filter(e => (e.date?.year ?? null) == (new Date()).getFullYear()).length;
-  return { total, since2025, YTD };
+  const now = new Date();
+  const YTD = entries.filter(e => (e.date?.year ?? null) == now.getFullYear()).length;
+  const withPopulation = entries.filter((e) => typeof e.location?.population === "number");
+  const totalPopulation = withPopulation.reduce((sum, e) => sum + e.location.population, 0);
+
+  const isInMonth = (e, year, month) => e.date?.year === year && e.date?.month === month;
+  const currentMonthCount = entries.filter((e) => isInMonth(e, now.getFullYear(), now.getMonth() + 1)).length;
+  // getMonth() is 0-indexed and rolls negative at January, so this walks
+  // back to December of the prior year rather than "month 0".
+  const prevMonthDate = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+  const previousMonthCount = entries.filter((e) =>
+    isInMonth(e, prevMonthDate.getFullYear(), prevMonthDate.getMonth() + 1)
+  ).length;
+
+  return {
+    total,
+    since2025,
+    YTD,
+    totalPopulation,
+    populationMatchedCount: withPopulation.length,
+    currentMonthCount,
+    currentMonthName: MONTH_NAMES[now.getMonth()],
+    previousMonthCount,
+    previousMonthName: MONTH_NAMES[prevMonthDate.getMonth()],
+  };
 }
 
 function summarizeLawsuits(data) {
@@ -171,7 +204,10 @@ function renderStatsBlock({ muni, suits, misuse }, generatedAt) {
 
   lines.push(
     `To date, **${muni.total} municipalities** have deflocked. ${muni.YTD > 0 ? `**${muni.YTD}** of those (${pct(muni.YTD, muni.total)}) have deflocked YTD` : ""} and **${muni.since2025}** of those (${pct(muni.since2025, muni.total)}) ` +
-      `have happened since the start of ${CUTOFF_YEAR}.`
+      `have happened since the start of ${CUTOFF_YEAR}.` +
+      (muni.totalPopulation > 0
+        ? ` Together, the **${muni.populationMatchedCount}** of those matched to Census population data cover **${formatPopulation(muni.totalPopulation)}** residents.`
+        : "")
   );
 
   const settlementSentence =
@@ -207,6 +243,10 @@ function renderStatsBlock({ muni, suits, misuse }, generatedAt) {
     `| Municipalities deflocked (total) | ${muni.total} |`,
     `| ...deflocked YTD | ${muni.YTD} |`,
     `| ...since start of ${CUTOFF_YEAR} | ${muni.since2025} |`,
+    `| ...in ${muni.currentMonthName} so far | ${muni.currentMonthCount} |`,
+    `| ...in ${muni.previousMonthName} | ${muni.previousMonthCount} |`,
+    `| ...matched to Census population data | ${muni.populationMatchedCount} of ${muni.total} |`,
+    `| Total population covered | ${muni.totalPopulation > 0 ? formatPopulation(muni.totalPopulation) : "n/a"} |`,
     `| Civil lawsuits tracked (total) | ${suits.total} |`,
     `| ...since start of ${CUTOFF_YEAR} | ${suits.since2025} |`,
     `| ...settled | ${suits.settledCount} |`,
