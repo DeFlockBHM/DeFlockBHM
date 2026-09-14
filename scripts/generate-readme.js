@@ -206,7 +206,7 @@ function renderStatsBlock({ muni, suits, misuse }, generatedAt) {
     `To date, **${muni.total} municipalities** have deflocked. ${muni.YTD > 0 ? `**${muni.YTD}** of those (${pct(muni.YTD, muni.total)}) have deflocked YTD` : ""} and **${muni.since2025}** of those (${pct(muni.since2025, muni.total)}) ` +
       `have happened since the start of ${CUTOFF_YEAR}.` +
       (muni.totalPopulation > 0
-        ? ` Together, the **${muni.populationMatchedCount}** of those matched to Census population data cover **${formatPopulation(muni.totalPopulation)}** residents.`
+        ? ` At least **${formatPopulation(muni.totalPopulation)} people** live in a deflocked municipality (based on the **${muni.populationMatchedCount}** of those matched to Census population data).`
         : "")
   );
 
@@ -246,7 +246,7 @@ function renderStatsBlock({ muni, suits, misuse }, generatedAt) {
     `| ...in ${muni.currentMonthName} so far | ${muni.currentMonthCount} |`,
     `| ...in ${muni.previousMonthName} | ${muni.previousMonthCount} |`,
     `| ...matched to Census population data | ${muni.populationMatchedCount} of ${muni.total} |`,
-    `| Total population covered | ${muni.totalPopulation > 0 ? formatPopulation(muni.totalPopulation) : "n/a"} |`,
+    `| People living in deflocked municipalities | ${muni.totalPopulation > 0 ? formatPopulation(muni.totalPopulation) : "n/a"} |`,
     `| Civil lawsuits tracked (total) | ${suits.total} |`,
     `| ...since start of ${CUTOFF_YEAR} | ${suits.since2025} |`,
     `| ...settled | ${suits.settledCount} |`,
