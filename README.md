@@ -15,8 +15,8 @@ Separately, at least **82 officers** have been fired, arrested, or convicted for
 | Municipalities deflocked (total) | 248 |
 | ...deflocked YTD | 227 |
 | ...since start of 2025 | 248 |
-| ...in September so far | 83 |
-| ...in August | 87 |
+| ...in October so far | 0 |
+| ...in September | 83 |
 | ...matched to Census population data | 248 of 248 |
 | People living in deflocked municipalities | 16,151,420 (~16.15M) |
 | Civil lawsuits tracked (total) | 17 |
@@ -26,7 +26,7 @@ Separately, at least **82 officers** have been fired, arrested, or convicted for
 | Officers fired/arrested/convicted (total) | 82 |
 | ...in the last 90 days | 23 |
 
-*Figures are computed directly from each tracker's published data file (links below) — news-sourced, not exhaustive court/police-record pulls; see each repo's `SCHEMA.md` for scope and caveats. Regenerated daily, last refreshed 2026-09-30.*
+*Figures are computed directly from each tracker's published data file (links below) — news-sourced, not exhaustive court/police-record pulls; see each repo's `SCHEMA.md` for scope and caveats. Regenerated daily, last refreshed 2026-10-01.*
 
 <!-- STATS:END -->
 
@@ -54,7 +54,7 @@ Separately, at least **82 officers** have been fired, arrested, or convicted for
 | Under investigation | 9 |
 | No outcome reported | 77 |
 
-*Counts are independent per outcome (see note above); computed directly from flock-officer-misuse's published data file — see its `SCHEMA.md` for how outcomes are tagged and its scope/caveats. Regenerated daily, last refreshed 2026-09-30.*
+*Counts are independent per outcome (see note above); computed directly from flock-officer-misuse's published data file — see its `SCHEMA.md` for how outcomes are tagged and its scope/caveats. Regenerated daily, last refreshed 2026-10-01.*
 
 <!-- MALFEASANCE:END -->
 
