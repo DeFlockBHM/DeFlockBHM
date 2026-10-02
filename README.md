@@ -6,19 +6,19 @@ and officers fired, arrested, or convicted for misusing the system.
 
 <!-- STATS:START -->
 
-To date, **248 municipalities** have deflocked. **227** of those (92%) have deflocked YTD and **248** of those (100%) have happened since the start of 2025. At least **16,151,420 (~16.15M) people** live in a deflocked municipality (based on the **248** of those matched to Census population data). 
+To date, **250 municipalities** have deflocked. **229** of those (92%) have deflocked YTD and **250** of those (100%) have happened since the start of 2025. At least **16,903,770 (~16.90M) people** live in a deflocked municipality (based on the **250** of those matched to Census population data). 
 At least **17 civil lawsuits** have been filed alleging mistaken-identity stops or other civil-rights violations tied to Flock's ALPR network, **9** of them since the start of 2025. **6** have settled, totaling **$2,229,500 (~$2.23M)** in publicly reported, actually-paid settlements (amount confirmed for 5 of those 6). 
 Separately, at least **84 officers** have been fired, arrested, or convicted for misusing Flock or similar ALPR access (59 fired, 37 arrested, 1 convicted — some overlap, e.g. fired *and* arrested), including **25** in the last 90 days.
 
 | Metric | Count |
 |---|---|
-| Municipalities deflocked (total) | 248 |
-| ...deflocked YTD | 227 |
-| ...since start of 2025 | 248 |
+| Municipalities deflocked (total) | 250 |
+| ...deflocked YTD | 229 |
+| ...since start of 2025 | 250 |
 | ...in October so far | 0 |
-| ...in September | 83 |
-| ...matched to Census population data | 248 of 248 |
-| People living in deflocked municipalities | 16,151,420 (~16.15M) |
+| ...in September | 85 |
+| ...matched to Census population data | 250 of 250 |
+| People living in deflocked municipalities | 16,903,770 (~16.90M) |
 | Civil lawsuits tracked (total) | 17 |
 | ...since start of 2025 | 9 |
 | ...settled | 6 |
@@ -34,7 +34,7 @@ Separately, at least **84 officers** have been fired, arrested, or convicted for
 
 <!-- MALFEASANCE:START -->
 
-**264 documented ALPR malfeasance incidents** in total (246 Flock, 18 other/unspecified vendor), sourced from the Institute for Justice's ALPR abuse database via [flock-officer-misuse](https://github.com/DeFlockBHM/flock-officer-misuse). An incident can carry more than one outcome (e.g. arrested *and* charged), so the rows below are independent counts, not a partition — they overlap with each other and won't sum to 264.
+**265 documented ALPR malfeasance incidents** in total (247 Flock, 18 other/unspecified vendor), sourced from the Institute for Justice's ALPR abuse database via [flock-officer-misuse](https://github.com/DeFlockBHM/flock-officer-misuse). An incident can carry more than one outcome (e.g. arrested *and* charged), so the rows below are independent counts, not a partition — they overlap with each other and won't sum to 265.
 
 | Outcome | Count |
 |---|---|
@@ -52,7 +52,7 @@ Separately, at least **84 officers** have been fired, arrested, or convicted for
 | Disciplined (reprimand/corrective action) | 1 |
 | Access revoked | 1 |
 | Under investigation | 9 |
-| No outcome reported | 77 |
+| No outcome reported | 78 |
 
 *Counts are independent per outcome (see note above); computed directly from flock-officer-misuse's published data file — see its `SCHEMA.md` for how outcomes are tagged and its scope/caveats. Regenerated daily, last refreshed 2026-10-02.*
 
