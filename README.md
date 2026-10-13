@@ -8,7 +8,7 @@ and officers fired, arrested, or convicted for misusing the system.
 
 To date, **253 municipalities** have deflocked. **232** of those (92%) have deflocked YTD and **253** of those (100%) have happened since the start of 2025. At least **18,759,976 (~18.76M) people** live in a deflocked municipality (based on the **253** of those matched to Census population data). 
 At least **21 civil lawsuits** have been filed alleging mistaken-identity stops or other civil-rights violations tied to Flock's ALPR network, **13** of them since the start of 2025. **6** have settled, totaling **$2,229,500 (~$2.23M)** in publicly reported, actually-paid settlements (amount confirmed for 5 of those 6). 
-Separately, at least **88 officers** have been fired, arrested, or convicted for misusing Flock or similar ALPR access (62 fired, 38 arrested, 1 convicted — some overlap, e.g. fired *and* arrested), including **28** in the last 90 days.
+Separately, at least **88 officers** have been fired, arrested, or convicted for misusing Flock or similar ALPR access (62 fired, 38 arrested, 1 convicted — some overlap, e.g. fired *and* arrested), including **27** in the last 90 days.
 
 | Metric | Count |
 |---|---|
@@ -24,9 +24,9 @@ Separately, at least **88 officers** have been fired, arrested, or convicted for
 | ...settled | 6 |
 | Total reported settlements paid | $2,229,500 (~$2.23M) |
 | Officers fired/arrested/convicted (total) | 88 |
-| ...in the last 90 days | 28 |
+| ...in the last 90 days | 27 |
 
-*Figures are computed directly from each tracker's published data file (links below) — news-sourced, not exhaustive court/police-record pulls; see each repo's `SCHEMA.md` for scope and caveats. Regenerated daily, last refreshed 2026-10-12.*
+*Figures are computed directly from each tracker's published data file (links below) — news-sourced, not exhaustive court/police-record pulls; see each repo's `SCHEMA.md` for scope and caveats. Regenerated daily, last refreshed 2026-10-13.*
 
 <!-- STATS:END -->
 
@@ -54,7 +54,7 @@ Separately, at least **88 officers** have been fired, arrested, or convicted for
 | Under investigation | 10 |
 | No outcome reported | 79 |
 
-*Counts are independent per outcome (see note above); computed directly from flock-officer-misuse's published data file — see its `SCHEMA.md` for how outcomes are tagged and its scope/caveats. Regenerated daily, last refreshed 2026-10-12.*
+*Counts are independent per outcome (see note above); computed directly from flock-officer-misuse's published data file — see its `SCHEMA.md` for how outcomes are tagged and its scope/caveats. Regenerated daily, last refreshed 2026-10-13.*
 
 <!-- MALFEASANCE:END -->
 
