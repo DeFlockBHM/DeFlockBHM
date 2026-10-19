@@ -6,21 +6,21 @@ and officers fired, arrested, or convicted for misusing the system.
 
 <!-- STATS:START -->
 
-To date, **253 municipalities** have deflocked. **232** of those (92%) have deflocked YTD and **253** of those (100%) have happened since the start of 2025. At least **18,759,976 (~18.76M) people** live in a deflocked municipality (based on the **253** of those matched to Census population data). 
-At least **21 civil lawsuits** have been filed alleging mistaken-identity stops or other civil-rights violations tied to Flock's ALPR network, **13** of them since the start of 2025. **6** have settled, totaling **$2,229,500 (~$2.23M)** in publicly reported, actually-paid settlements (amount confirmed for 5 of those 6). 
+To date, **278 municipalities** have deflocked. **257** of those (92%) have deflocked YTD and **278** of those (100%) have happened since the start of 2025. At least **19,848,273 (~19.85M) people** live in a deflocked municipality (based on the **278** of those matched to Census population data). 
+At least **23 civil lawsuits** have been filed alleging mistaken-identity stops or other civil-rights violations tied to Flock's ALPR network, **15** of them since the start of 2025. **6** have settled, totaling **$2,229,500 (~$2.23M)** in publicly reported, actually-paid settlements (amount confirmed for 5 of those 6). 
 Separately, at least **91 officers** have been fired, arrested, or convicted for misusing Flock or similar ALPR access (65 fired, 38 arrested, 1 convicted — some overlap, e.g. fired *and* arrested), including **29** in the last 90 days.
 
 | Metric | Count |
 |---|---|
-| Municipalities deflocked (total) | 253 |
-| ...deflocked YTD | 232 |
-| ...since start of 2025 | 253 |
-| ...in October so far | 3 |
-| ...in September | 85 |
-| ...matched to Census population data | 253 of 253 |
-| People living in deflocked municipalities | 18,759,976 (~18.76M) |
-| Civil lawsuits tracked (total) | 21 |
-| ...since start of 2025 | 13 |
+| Municipalities deflocked (total) | 278 |
+| ...deflocked YTD | 257 |
+| ...since start of 2025 | 278 |
+| ...in October so far | 23 |
+| ...in September | 89 |
+| ...matched to Census population data | 278 of 278 |
+| People living in deflocked municipalities | 19,848,273 (~19.85M) |
+| Civil lawsuits tracked (total) | 23 |
+| ...since start of 2025 | 15 |
 | ...settled | 6 |
 | Total reported settlements paid | $2,229,500 (~$2.23M) |
 | Officers fired/arrested/convicted (total) | 91 |
